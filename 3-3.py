@@ -1,0 +1,92 @@
+f=open("./weatherF.dat","r")
+w=open("./weatherW.dat","r")
+k=open("./weatherK.dat","r")
+
+
+title=f.readline()
+title=w.readline()
+title=k.readline()
+i=f.readline()[:-1].split("\t")
+ave_temp=[float(i[1]),i[0],"F",float(i[1]),i[0],"F"]
+max_temp=[float(i[2]),i[0],"F",float(i[2]),i[0],"F"]
+min_temp=[float(i[3]),i[0],"F",float(i[3]),i[0],"F"]
+for i in f.readlines():
+  i=i[:-1].split("\t")
+  if(float(i[1])>ave_temp[0]):
+    ave_temp[0]=float(i[1])
+    ave_temp[1]=i[0]
+  elif(float(i[1])<ave_temp[3]):
+    ave_temp[3]=float(i[1])
+    ave_temp[4]=i[0]
+  if(float(i[2])>max_temp[0]):
+    max_temp[0]=float(i[2])
+    max_temp[1]=i[0]
+  elif(float(i[2])<max_temp[3]):
+    max_temp[3]=float(i[2])
+    max_temp[4]=i[0]
+  if(float(i[3])>min_temp[0]):
+    min_temp[0]=float(i[3])
+    min_temp[1]=i[0]
+  elif(float(i[3])<min_temp[3]):
+    min_temp[3]=float(i[3])
+    min_temp[4]=i[0]
+
+for i in w.readlines():
+  i=i[:-1].split("\t")
+  if(float(i[1])>ave_temp[0]):
+    ave_temp[0]=float(i[1])
+    ave_temp[1]=i[0]
+    ave_temp[2]="W"
+  elif(float(i[1])<ave_temp[3]):
+    ave_temp[3]=float(i[1])
+    ave_temp[4]=i[0]
+    ave_temp[5]="W"
+  if(float(i[2])>max_temp[0]):
+    max_temp[0]=float(i[2])
+    max_temp[1]=i[0]
+    max_temp[2]="W"
+  elif(float(i[2])<max_temp[3]):
+    max_temp[3]=float(i[2])
+    max_temp[4]=i[0]
+    max_temp[5]="W"
+  if(float(i[3])>min_temp[0]):
+    min_temp[0]=float(i[3])
+    min_temp[1]=i[0]
+    min_temp[2]="W"
+  elif(float(i[3])<min_temp[3]):
+    min_temp[3]=float(i[3])
+    min_temp[4]=i[0]
+    min_temp[5]="W"
+
+for i in k.readlines():
+  i=i[:-1].split("\t")
+  if(len(i)==0):
+    break;
+  if(float(i[1])>ave_temp[0]):
+    ave_temp[0]=float(i[1])
+    ave_temp[1]=i[0]
+    ave_temp[2]="K"
+  elif(float(i[1])<ave_temp[3]):
+    ave_temp[3]=float(i[1])
+    ave_temp[4]=i[0]
+    ave_temp[5]="K"
+  if(float(i[2])>max_temp[0]):
+    max_temp[0]=float(i[2])
+    max_temp[1]=i[0]
+    max_temp[2]="K"
+  elif(float(i[2])<max_temp[3]):
+    max_temp[3]=float(i[2])
+    max_temp[4]=i[0]
+    max_temp[5]="K"
+  if(float(i[3])>min_temp[0]):
+    min_temp[0]=float(i[3])
+    min_temp[1]=i[0]
+    min_temp[2]="K"
+  elif(float(i[3])<min_temp[3]):
+    min_temp[3]=float(i[3])
+    min_temp[4]=i[0]
+    min_temp[5]="K"
+
+print(ave_temp)
+print(max_temp)
+print(min_temp)
